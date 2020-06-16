@@ -1,0 +1,49 @@
+<div class="row mt-5">
+  <div class="col-md-4 mb-3" *ngFor="let event of events">
+
+    <!-- card -->
+    <div class="card text-center">
+      <div class="card-body">
+        <h5 class="card-title"> {{ event.name }} </h5>
+        <p class="card-text"> {{ event.description }} </p>
+        <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#showMore">See
+          Details</button>
+      </div>
+      <div class="card-footer text-muted">
+        {{ event.date | date:'shortDate' }}
+      </div>
+    </div>
+
+    <!-- modal -->
+    <div class="modal fade" id="showMore" tabindex="-1" role="dialog" aria-labelledby="showMoreLabel"
+      aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="showMoreLabel"> {{ event.name }} </h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            {{ event.description }}
+            <br><br>
+            Mauris imperdiet sapien ante, at accumsan nisi feugiat nec. Sed luctus sagittis sagittis. Vestibulum eget
+            consequat massa, et vulputate metus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices
+            posuere cubilia Curae; Nulla in luctus magna, vel bibendum dolor. Proin scelerisque orci eros, sed dapibus
+            purus mattis porta. Etiam odio magna, commodo mollis vehicula a, ultrices et dui. Praesent dictum semper
+            mattis. Sed posuere eros eu massa mollis porta. Proin sit amet diam volutpat dolor dapibus dictum. Class
+            aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Proin laoreet urna sit
+            amet sem laoreet, vel facilisis mi maximus. Phasellus at lorem vitae arcu ultrices vestibulum.
+            <br><br>
+            {{ event.date | date:'longDate' }}
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Buy tickets</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

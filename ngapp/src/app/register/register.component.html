@@ -1,0 +1,70 @@
+<div class="row pt-5">
+
+  <!-- register new account col -->
+  <div class="col-md-7 mx-auto mb-5">
+    <div class="card rounded-5">
+      <div class="card-header">
+        <h3 class="mb-0">Register new account</h3>
+      </div>
+      <div class="card-body">
+        <form class="form" #registerForm="ngForm">
+          <div class="form-group">
+            <label for="">Email</label>
+            <input [(ngModel)]="registerUserData.email" name="email" #email="ngModel" type="email"
+              pattern="^[\w.-]{2,}@\w{2,}\..{2,3}(.{2,3})?$" class="form-control rounded-5"
+              [class.is-invalid]="email.invalid && email.touched" placeholder="example@abc.com" required>
+            <div *ngIf="email.errors && (email.invalid && email.touched)">
+              <small class="text-danger" *ngIf="email.errors.required">Email field is required</small>
+              <small class="text-danger" *ngIf="email.errors.pattern">Please fill in a valid email address</small>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="">Password</label>
+            <input [(ngModel)]="registerUserData.password" name="password" type="password" #pass="ngModel"
+              type="password" pattern="^\w{5,}$" class="form-control rounded-5"
+              [class.is-invalid]="pass.invalid && pass.touched" required>
+          </div>
+          <div *ngIf="pass.errors && (pass.invalid && pass.touched)">
+            <small class="text-danger" *ngIf="pass.errors.required">Password is required</small>
+            <small class="text-danger" *ngIf="pass.errors.pattern">Password must be at least 5 characters long</small>
+          </div>
+          <button (click)="registerUser()" [disabled]="registerForm.form.invalid"
+            class="btn btn-outline-info float-right" type="submit">Register</button>
+          <small *ngIf="userExists" class="text-danger">This user already exists</small>
+        </form>
+      </div>
+    </div>
+  </div>
+  <!-- register new account col end -->
+
+
+  <!-- use existing account col -->
+  <div class="col-md-4 mx-auto">
+    <div class="card rounded-5">
+      <div class="card-header">
+        <h3 class="mb-0">Use other accounts</h3>
+      </div>
+      <div class="card-body m-auto">
+        <div class="text-center mb-3">
+          <button type="button" class="btn btn-outline-danger btn-block" (click)="googleLogin()">
+            <i class="fab fa-google"></i>&nbsp; Sign up with Google
+          </button>
+        </div>
+        <hr>
+        <div class="text-center mb-3">
+          <button type="button" class="btn btn-outline-primary btn-block"><i class="fab fa-facebook-f"></i> &nbsp; Sign
+            up with Facebook</button>
+        </div>
+        <hr>
+        <div class="text-center">
+          <button type="button" class="btn btn-outline-dark btn-block"><i class="fab fa-github"></i> &nbsp; Sign up with
+            GitHub</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- use existing account col -->
+
+
+
+</div>

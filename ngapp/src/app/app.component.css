@@ -1,0 +1,12 @@
+.fadeOut {
+  transition: all 1s;
+  margin-bottom: -50px;
+  display: block;
+  opacity: 0;
+  transition-delay: 3s;
+}
+
+.opa1 {
+  opacity: 1;
+  display: none;
+}
